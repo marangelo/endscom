@@ -29,7 +29,7 @@ services:
       - "./marangelo/dist:/app"
       - "~/Devs/umk_docker/default.tmpl:/kool/default.tmpl"
     ports:
-      - "84:80"
+      - "85:80"
     environment:
       - APP_NAME=wMarangelo
       - PHP_FPM_LISTEN=/run/php-fpm.sock
