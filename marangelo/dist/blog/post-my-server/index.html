@@ -73,7 +73,7 @@ todas las aplicaciones web y otros servicios , Adquieriendo un dominio y apuntan
 </li>
 </ol>
 <p>¡Listo! Ahora tengo un sistema Ubuntu Server con Docker y Docker Compose instalados y listos para usar.</p>
-<h2 id="instalación-de-web-server-con-php74--nginx--sqlsrv-server">Instalación de WEB Server con php7.4 + nginx + sqlsrv Server</h2>
+<h2 id="instalación-de-web-server-con-php74--nginx--sqlsrv-server-con-ssl">Instalación de WEB Server con php7.4 + nginx + sqlsrv Server con SSL</h2>
 <p>Principalmente uso un Stack con Laravel 7 y mysql 5.7 , me di a la tarea de prepara un docker compose para que dentro del servidor
 se corran todos estos contenedores y asi estanderizar mi Ambiente de desarrollo como el de produccion, este es el docker compose que use:</p>
 <pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #85E89D">version</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"3.7"</span></span>
@@ -228,7 +228,46 @@ se corran todos estos contenedores y asi estanderizar mi Ambiente de desarrollo 
 <p>Y ya estaria , con todos estos archivos ya configurados correctamente, deberia de andar, les dejo por aqui
 las referencia de la documentacion de la imagen que uso para las aplicaciones.</p>
 <p><strong>Referencia:</strong> <a href="https://github.com/kool-dev/docker-php">Repositorio de Docker PHP por kool-dev</a></p>
-<p>Saluditos</p></article></main></main></div><footer class="footer footer-center block mb-5 pt-10"><div class="pb-2">
+<p>Ahora queria tener SSL y lei que con letsencrypt y nginx se podia tener, me di a la tarea de usarlo, con lo que llegue a usar
+Nginx Proxy Manager y asi manejar varios dominio y que los certificados se Renueve automaticamente, aqui les comparto el que use:</p>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #85E89D">version</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">'3'</span></span>
+<span class="line"><span style="color: #85E89D">services</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #85E89D">app</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">image</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">'jc21/nginx-proxy-manager:latest'</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">container_name</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">cn_nginx-proxy-manage</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">ports</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">'80:80'</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">'81:81'</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">'443:443'</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">volumes</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./config.json:/app/config/production.json</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./data:/data</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./letsencrypt:/etc/letsencrypt</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #85E89D">db</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">image</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">'jc21/mariadb-aria:10.4.15'</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">container_name</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">cn_mariadb-nginx</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">environment</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_ROOT_PASSWORD</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">'npm'</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_DATABASE</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">'npm'</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_USER</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">'npm'</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_PASSWORD</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">'npm'</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">volumes</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./data/mysql:/var/lib/mysql</span></span></code></pre>
+<p>Y el contenido del archivo <code>.config.json</code>:</p>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">{</span></span>
+<span class="line"><span style="color: #e1e4e8">  "database": {</span></span>
+<span class="line"><span style="color: #e1e4e8">    "engine": "mysql",</span></span>
+<span class="line"><span style="color: #e1e4e8">    "host": "db",</span></span>
+<span class="line"><span style="color: #e1e4e8">    "name": "npm",</span></span>
+<span class="line"><span style="color: #e1e4e8">    "user": "npm",</span></span>
+<span class="line"><span style="color: #e1e4e8">    "password": "npm",</span></span>
+<span class="line"><span style="color: #e1e4e8">    "port": 3306</span></span>
+<span class="line"><span style="color: #e1e4e8">  }</span></span>
+<span class="line"><span style="color: #e1e4e8">}</span></span></code></pre>
+<p>y con esto tendria ya el contenedor de los certificados corriendo.</p>
+<p>por ultimo pero esto ya varia dependiendo del proveedor  porque yo me pille el dominio , apunete el DNS a este Serverde Y listo ya tengo sitio WEB.</p>
+<p>pero como nunca paro de aprender , me monte MINIO Object Store en Docker
+pero Coming soon …</p></article></main></main></div><footer class="footer footer-center block mb-5 pt-10"><div class="pb-2">
 &copy; 2023 Maryan Espinoza
 </div><div class="inline opacity-75"><!-- Thanks for using this template. You can keep this line to support my work :) --><a href="https://astrofy-template.netlify.app/" target="_blank" class="font-bold">Astrofy Template</a> developed by
 <a href="http://marangelo.endscom.com/" target="_blank" class="font-bold">Maryan Espinoza ⚡️</a></div></footer></div><div class="drawer-side z-40"><label for="my-drawer" class="drawer-overlay"></label><aside class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col"><div class="w-fit mx-auto mt-5 mb-6"><a href="/"><div class="avatar transition ease-in-out hover:scale-[102%] block m-auto"><div class="w-[8.5rem]"><img src="/sho-bw.png" class="mask mask-circle" alt="Profile image" width="300" height="300" loading="lazy" decoding="async"></div></div></a></div><ul class="menu grow shrink menu-md overflow-y-auto"><li><a class="py-3 text-base" id="home" href="/">Home</a></li><li><a class="py-3 text-base" id="projects" href="/projects">Projects</a></li><li><a class="py-3 text-base" id="blog" href="/blog/">Blog</a></li><li><a class="py-3 text-base" id="cv" href="/cv">CV</a></li><li><a class="py-3 text-base" href="mailto:endscom@gmail.com" target="_blank" referrerpolicy="no-referrer-when-downgrade">Contact</a></li></ul><script>(function(){const sideBarActiveItemID = undefined;
