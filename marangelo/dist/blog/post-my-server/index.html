@@ -1,0 +1,239 @@
+<!DOCTYPE html><html lang="en" data-theme="lofi"><head><head><meta charset="utf-8"><meta name="viewport" content="width=device-width"><meta http-equiv="X-UA-Compatible" content="IE=edge"><!-- Primary Meta Tags --><title>Instalación de mi  Server web con Docker</title><meta name="title" content="Instalación de mi  Server web con Docker"><meta name="description" content="Como Monte mi servidor web Con docker"><link rel="canonical" href="https://marangelo.lat/blog/post-my-server/"><!-- Global Metadata --><link rel="icon" href="/favicon.png"><link rel="apple-touch-icon" href="/images/icon/192x192.png"><link rel="manifest" href="/manifest.webmanifest"><meta name="google" content="notranslate"><link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><meta name="msapplication-TileColor" content="#2b5797"><meta name="theme-color" content="#ffffff"><!-- Open Graph / Facebook --><meta property="og:locale" content="en_EN"><meta property="og:type" content="website"><meta property="og:url" content="https://marangelo.lat/blog/post-my-server/"><meta property="og:title" content="Instalación de mi  Server web con Docker"><meta property="og:description" content="Como Monte mi servidor web Con docker"><meta property="og:image" content=""><!-- Twitter --><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Instalación de mi  Server web con Docker"><meta name="twitter:url" content="https://marangelo.lat/blog/post-my-server/"><meta name="twitter:description" content="Como Monte mi servidor web Con docker"><meta name="twitter:image" content=""><meta name="twitter:image:alt" content="Instalación de mi  Server web con Docker"><meta name="twitter:site" content="@marangelo_git"><meta name="twitter:creator" content="@marangelo_git"><link rel="stylesheet" href="/_astro/404.3c730e20.css" />
+<style>.time-line-container>div:last-child .education__time>.education__line{display:none}
+</style></head></head><body><div class="bg-base-100 drawer lg:drawer-open"><input id="my-drawer" type="checkbox" class="drawer-toggle"><div class="drawer-content bg-base-100"><div class="sticky lg:hidden top-0 z-30 flex h-16 w-full justify-center bg-opacity-90 backdrop-blur transition-all duration-100 bg-base-100 text-base-content shadow-sm"><div class="navbar"><div class="navbar-start"><label for="my-drawer" class="btn btn-square btn-ghost"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" class="inline-block w-5 h-5 stroke-current"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg></label></div><div class="navbar-center"><a class="btn btn-ghost normal-case text-xl" href="/">Maryan Espinoza ⚡️</a></div><div class="navbar-end"></div></div></div><div class="md:flex md:justify-center"><main class="p-6 pt-10 lg:max-w-[900px] max-w-[100vw]"><main class="md:flex md:justify-center"><article class="prose prose-lg max-w-[750px] prose-img:mx-auto"><img src="/me.webp" alt="Instalación de mi  Server web con Docker" class="w-full mb-6" width="750" height="422" loading="lazy" decoding="async"><h1 class="title my-2 text-4xl font-bold">Instalación de mi  Server web con Docker</h1><time>Dec 26, 2023</time><br><a href="/blog/tag/Linux" class="badge badge-outline ml-2 no-underline">Linux</a><a href="/blog/tag/Servers" class="badge badge-outline ml-2 no-underline">Servers</a><a href="/blog/tag/Docker" class="badge badge-outline ml-2 no-underline">Docker</a><div class="divider my-2"></div><p>Hola , quiero compartir mi experiencia y los pasos que seguí para instalar Ubuntu Server y configurar Docker junto con Docker Compose. Emplie un Servidor fisico para Correr
+todas las aplicaciones web y otros servicios , Adquieriendo un dominio y apuntandolo a este mismo.</p>
+<h2 id="instalación-de-ubuntu-server">Instalación de Ubuntu Server</h2>
+<ol>
+<li>
+<p><strong>Descargar Ubuntu Server:</strong></p>
+<ul>
+<li>Lo primero que hice fue visitar el <a href="https://ubuntu.com/download/server">sitio web oficial de Ubuntu</a> y descargar la versión más reciente de Ubuntu Server.</li>
+</ul>
+</li>
+<li>
+<p><strong>Crear un medio de instalación:</strong></p>
+<ul>
+<li>Grabé la imagen de Ubuntu Server en un USB siguiendo las instrucciones proporcionadas en el sitio web de Ubuntu.</li>
+</ul>
+</li>
+<li>
+<p><strong>Arrancar desde el medio de instalación:</strong></p>
+<ul>
+<li>Inserté el USB en el servidor y configuré la secuencia de arranque en la BIOS para que iniciara desde el medio que creé.</li>
+</ul>
+</li>
+<li>
+<p><strong>Instalar Ubuntu Server:</strong></p>
+<ul>
+<li>Seguí las instrucciones en pantalla para personalizar mi instalación, estableciendo el nombre de usuario, contraseña y otras preferencias.</li>
+</ul>
+</li>
+<li>
+<p><strong>Actualizar el sistema:</strong></p>
+<ul>
+<li>Después de la instalación, ejecuté los siguientes comandos para asegurarme de que mi sistema estuviera actualizado:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">sudo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">apt</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">update</span></span>
+<span class="line"><span style="color: #B392F0">sudo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">apt</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">upgrade</span></span></code></pre>
+</li>
+<li>
+<p><strong>Instalar Docker Engine y Docker Compose:</strong></p>
+<ul>
+<li>Actualicé el índice de paquetes e instalé Docker y Docker Compose:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">sudo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">apt</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">update</span></span>
+<span class="line"><span style="color: #B392F0">sudo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">apt</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">install</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">docker-ce</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">docker-compose</span></span></code></pre>
+</li>
+<li>
+<p><strong>Verificar la instalación de Docker:</strong></p>
+<ul>
+<li>Aseguré que Docker y Docker Compose se instalaron correctamente:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">sudo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">docker</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--version</span></span>
+<span class="line"><span style="color: #B392F0">docker-compose</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">--version</span></span></code></pre>
+<p>Verifiqué las versiones para asegurarme de que todo estaba en orden.</p>
+</li>
+<li>
+<p><strong>Verificar el estado de Docker:</strong></p>
+<ul>
+<li>Comprobé que Docker estaba en ejecución con:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">sudo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">systemctl</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">status</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">docker</span></span></code></pre>
+<p>Verifiqué que Docker estuviera activo y funcionando.</p>
+</li>
+<li>
+<p><strong>Agregar el usuario al grupo Docker:</strong></p>
+<ul>
+<li>Para ejecutar comandos Docker sin <code>sudo</code>, me añadí al grupo Docker y reinicié la sesión:</li>
+</ul>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #B392F0">sudo</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">usermod</span><span style="color: #E1E4E8"> </span><span style="color: #79B8FF">-aG</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">docker</span><span style="color: #E1E4E8"> $USER</span></span>
+<span class="line"><span style="color: #B392F0">su</span><span style="color: #E1E4E8"> </span><span style="color: #9ECBFF">-</span><span style="color: #E1E4E8"> $USER</span></span>
+<span class="line"><span style="color: #B392F0">groups</span></span></code></pre>
+<p>Aseguré que el grupo “docker” apareciera en la lista, indicando que tenía permisos para ejecutar comandos Docker sin sudo.</p>
+</li>
+</ol>
+<p>¡Listo! Ahora tengo un sistema Ubuntu Server con Docker y Docker Compose instalados y listos para usar.</p>
+<h2 id="instalación-de-web-server-con-php74--nginx--sqlsrv-server">Instalación de WEB Server con php7.4 + nginx + sqlsrv Server</h2>
+<p>Principalmente uso un Stack con Laravel 7 y mysql 5.7 , me di a la tarea de prepara un docker compose para que dentro del servidor
+se corran todos estos contenedores y asi estanderizar mi Ambiente de desarrollo como el de produccion, este es el docker compose que use:</p>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #85E89D">version</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"3.7"</span></span>
+<span class="line"><span style="color: #85E89D">services</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D"># Servicio para la aplicación web (PHP + Nginx + Sqlsrv)</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #85E89D">web-app-my</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">container_name</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">cn_app-my</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">image</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">kooldev/php:7.4-nginx-sqlsrv-prod</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">restart</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">always</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">volumes</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"./www/MYAPP:/app/MYAPP"</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"./default.tmpl:/kool/default.tmpl"</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">ports</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"80:80"</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">environment</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #6A737D"># Variables de entorno para la aplicación</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">APP_NAME=MYAPP</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">PHP_FPM_LISTEN=/run/php-fpm.sock</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_LISTEN=80</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_ROOT=/app/MYAPP/public</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_INDEX=index.php</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_CLIENT_MAX_BODY_SIZE=25M</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_PHP_FPM=unix:/run/php-fpm.sock</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_FASTCGI_READ_TIMEOUT=60s</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_FASTCGI_BUFFERS=8 8k</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">NGINX_FASTCGI_BUFFER_SIZE=16k</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D"># Servicio para la base de datos MySQL</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #85E89D">mysql_master</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">image</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">mysql:5.7</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">container_name</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"mysql_master"</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">environment</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #6A737D"># Configuración de la base de datos</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_ROOT_HOST</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">"%"</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_ROOT_PASSWORD</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">${PZW_ROOT}</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_PORT</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">${myPORT}</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_USER</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">${MYSQL_USER_MST}</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_PASSWORD</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">${MYSQL_PASS_MST}</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">MYSQL_LOWER_CASE_TABLE_NAMES</span><span style="color: #E1E4E8">: </span><span style="color: #79B8FF">0</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">restart</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">always</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">ports</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">4406:3306</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">volumes</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #6A737D"># Volumenes para persistencia de datos y configuración</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./master/conf/mysql.conf.cnf:/etc/mysql/conf.d/mysql.conf.cnf</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./master/data:/var/lib/mysql</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./master/logs:/var/log/mysql</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./initdb/initdb.sql:/docker-entrypoint-initdb.d/initdb.sql</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">healthcheck</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #6A737D"># Verificación de salud de MySQL</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">test</span><span style="color: #E1E4E8">: [ </span><span style="color: #9ECBFF">"CMD"</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">"mysqladmin"</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">"ping"</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">"-h"</span><span style="color: #E1E4E8">, </span><span style="color: #9ECBFF">"localhost"</span><span style="color: #E1E4E8"> ]</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">interval</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">30s</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">timeout</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">20s</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">retries</span><span style="color: #E1E4E8">: </span><span style="color: #79B8FF">10</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #85E89D">start_period</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">30s</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D"># Servicio para realizar copias de seguridad de MySQL</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #85E89D">mysql-cron-backup</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">image</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">fradelg/mysql-cron-backup</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">container_name</span><span style="color: #E1E4E8"> : </span><span style="color: #9ECBFF">cn_mysql-cron-restore</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">depends_on</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">mysql_master</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">volumes</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./BackUp:/backup</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">environment</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #6A737D"># Configuración para el servicio de respaldo</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">MYSQL_HOST=${IP_SERVER}</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">MYSQL_PORT=${myPORT}</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">MYSQL_USER=root</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">MYSQL_PASS=${PZW_ROOT}</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D"># Servicio para realizar copias de seguridad en Google Drive usando rclone</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #85E89D">rclone-gdrive</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">image</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">pfidr/rclone</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">container_name</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">cn_cron-rclone-gdrive</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">restart</span><span style="color: #E1E4E8">: </span><span style="color: #9ECBFF">always</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">volumes</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #6A737D"># Configuración y almacenamiento de copias de seguridad</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./rclone:/config</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">./BackUp:/gdrive</span></span>
+<span class="line"><span style="color: #E1E4E8">    </span><span style="color: #85E89D">environment</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">      </span><span style="color: #6A737D"># Configuración de rclone para Google Drive</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">PUID=1000</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">PGID=1000</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"RCLONE_CMD=sync"</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"TZ=America/Managua"</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"SYNC_SRC=/gdrive"</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"SYNC_DEST=gdrive:"</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"CRON=21 23 * * *"</span><span style="color: #E1E4E8"> </span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"FORCE_SYNC=1"</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"SYNC_OPTS=-v"</span></span>
+<span class="line"><span style="color: #E1E4E8">      - </span><span style="color: #9ECBFF">"CHECK_URL=https://hc-ping.com/9cd1591a-bedb-4155-95a7-527179bfd777"</span></span>
+<span class="line"></span>
+<span class="line"><span style="color: #85E89D">volumes</span><span style="color: #E1E4E8">:</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #6A737D"># Volumen para datos persistentes de MySQL</span></span>
+<span class="line"><span style="color: #E1E4E8">  </span><span style="color: #85E89D">mysql-data</span><span style="color: #E1E4E8">:</span></span></code></pre>
+<p>Como les muestro defino tres Contenedores: <code>web-app-my</code> para la aplicación web en general ,, <code>mysql_master</code> para la base de datos MySQL en su version 5.7, y <code>mysql-cron-backup</code> para realizar copias de seguridad de MySQL . También hay un servicio adicional <code>rclone-gdrive</code> para realizar copias de seguridad en Google Drive utilizando rclone. Se utilizan variables de entorno para configurar los servicios y se definen volúmenes para persistencia de datos. Además, se especifica un cronjob para realizar sincronizaciones periódicas con Google .</p>
+<p>Y el contenido del archivo <code>.env</code>:</p>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">PZW_ROOT=Aqui-tu_passWord-UwU</span></span>
+<span class="line"><span style="color: #e1e4e8">myPORT=3306</span></span>
+<span class="line"><span style="color: #e1e4e8">IP_SERVER=192.168.0.0</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">MYSQL_USER_MST=usr_d3l_m@st3r</span></span>
+<span class="line"><span style="color: #e1e4e8">MYSQL_PASS_MST=pzw_d3l_m@st3r</span></span></code></pre>
+<p>En este archivo <code>.env</code>, se definen las variables de entorno que se utilizan en el archivo <code>docker-compose.yml</code>, facilitando la gestión de configuraciones y secretos.</p>
+<p>Igualmente al Contenedor de las aplicaciones les paso un archivo, que recibe las variables y configura a nginx , el archivo <code>default.tmpl</code> que quedaria asi:</p>
+<pre class="astro-code github-dark" style="background-color: #24292e; overflow-x: auto;" tabindex="0"><code><span class="line"><span style="color: #e1e4e8">server {</span></span>
+<span class="line"><span style="color: #e1e4e8">    listen {{ .Env.NGINX_LISTEN }} default_server;</span></span>
+<span class="line"><span style="color: #e1e4e8">    server_name _;</span></span>
+<span class="line"><span style="color: #e1e4e8">    root {{ .Env.NGINX_ROOT }};</span></span>
+<span class="line"><span style="color: #e1e4e8">    index {{ .Env.NGINX_INDEX }};</span></span>
+<span class="line"><span style="color: #e1e4e8">    charset utf-8;</span></span>
+<span class="line"><span style="color: #e1e4e8">    </span></span>
+<span class="line"><span style="color: #e1e4e8">    location = /favicon.ico { log_not_found off; access_log off; }</span></span>
+<span class="line"><span style="color: #e1e4e8">    location = /robots.txt  { log_not_found off; access_log off; }</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">    client_max_body_size {{ .Env.NGINX_CLIENT_MAX_BODY_SIZE }};</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">    error_page 404 /index.php;</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">    location / {</span></span>
+<span class="line"><span style="color: #e1e4e8">        try_files $uri $uri/ /{{ .Env.NGINX_INDEX }}?$query_string;</span></span>
+<span class="line"><span style="color: #e1e4e8">        add_header X-Served-By kool.dev;</span></span>
+<span class="line"><span style="color: #e1e4e8">    }</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">    location /{{ .Env.APP_NAME }} {</span></span>
+<span class="line"><span style="color: #e1e4e8">        alias {{ .Env.NGINX_ROOT }};</span></span>
+<span class="line"><span style="color: #e1e4e8">        try_files $uri $uri/ @{{ .Env.APP_NAME }};</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">        location ~ \.php$ {</span></span>
+<span class="line"><span style="color: #e1e4e8">            fastcgi_pass {{ .Env.NGINX_PHP_FPM }};</span></span>
+<span class="line"><span style="color: #e1e4e8">            fastcgi_param SCRIPT_FILENAME $request_filename;</span></span>
+<span class="line"><span style="color: #e1e4e8">            include fastcgi_params;</span></span>
+<span class="line"><span style="color: #e1e4e8">        }</span></span>
+<span class="line"><span style="color: #e1e4e8">    }</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">    location @{{ .Env.APP_NAME }} {</span></span>
+<span class="line"><span style="color: #e1e4e8">        rewrite /{{ .Env.APP_NAME }}/(.*)$ /{{ .Env.APP_NAME }}/index.php?/$1 last;</span></span>
+<span class="line"><span style="color: #e1e4e8">    }</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span>
+<span class="line"><span style="color: #e1e4e8">    location ~ \.php$ {</span></span>
+<span class="line"><span style="color: #e1e4e8">        fastcgi_buffers {{ .Env.NGINX_FASTCGI_BUFFERS }};</span></span>
+<span class="line"><span style="color: #e1e4e8">        fastcgi_buffer_size {{ .Env.NGINX_FASTCGI_BUFFER_SIZE }};</span></span>
+<span class="line"><span style="color: #e1e4e8">        fastcgi_pass {{ .Env.NGINX_PHP_FPM }};</span></span>
+<span class="line"><span style="color: #e1e4e8">        fastcgi_read_timeout {{ .Env.NGINX_FASTCGI_READ_TIMEOUT }};</span></span>
+<span class="line"><span style="color: #e1e4e8">        fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;</span></span>
+<span class="line"><span style="color: #e1e4e8">        include fastcgi_params;</span></span>
+<span class="line"><span style="color: #e1e4e8">    }</span></span>
+<span class="line"><span style="color: #e1e4e8">}</span></span>
+<span class="line"><span style="color: #e1e4e8"></span></span></code></pre>
+<p>Y ya estaria , con todos estos archivos ya configurados correctamente, deberia de andar, les dejo por aqui
+las referencia de la documentacion de la imagen que uso para las aplicaciones.</p>
+<p><strong>Referencia:</strong> <a href="https://github.com/kool-dev/docker-php">Repositorio de Docker PHP por kool-dev</a></p>
+<p>Saluditos</p></article></main></main></div><footer class="footer footer-center block mb-5 pt-10"><div class="pb-2">
+&copy; 2023 Maryan Espinoza
+</div><div class="inline opacity-75"><!-- Thanks for using this template. You can keep this line to support my work :) --><a href="https://astrofy-template.netlify.app/" target="_blank" class="font-bold">Astrofy Template</a> developed by
+<a href="http://marangelo.endscom.com/" target="_blank" class="font-bold">Maryan Espinoza ⚡️</a></div></footer></div><div class="drawer-side z-40"><label for="my-drawer" class="drawer-overlay"></label><aside class="px-2 pt-2 h-auto min-h-full w-[19rem] bg-base-200 text-base-content flex flex-col"><div class="w-fit mx-auto mt-5 mb-6"><a href="/"><div class="avatar transition ease-in-out hover:scale-[102%] block m-auto"><div class="w-[8.5rem]"><img src="/sho-bw.png" class="mask mask-circle" alt="Profile image" width="300" height="300" loading="lazy" decoding="async"></div></div></a></div><ul class="menu grow shrink menu-md overflow-y-auto"><li><a class="py-3 text-base" id="home" href="/">Home</a></li><li><a class="py-3 text-base" id="projects" href="/projects">Projects</a></li><li><a class="py-3 text-base" id="blog" href="/blog/">Blog</a></li><li><a class="py-3 text-base" id="cv" href="/cv">CV</a></li><li><a class="py-3 text-base" href="mailto:endscom@gmail.com" target="_blank" referrerpolicy="no-referrer-when-downgrade">Contact</a></li></ul><script>(function(){const sideBarActiveItemID = undefined;
+const activeClass = "bg-base-300";
+
+const activeItemElem = document.getElementById(sideBarActiveItemID);
+activeItemElem && activeItemElem.classList.add(activeClass);
+})();</script><div class="block sticky pointer-events-none bottom-10 bg-base-200 justify-center h-12 [mask-image:linear-gradient(transparent,#000000)]"></div><div class="social-icons px-4 pb-5 pt-1 flex self-center justify-center sticky bottom-0 bg-base-200"><a href="https://github.com/marangelo" target="_blank" class="mx-3" aria-label="Github" title="Github"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;transform: ;msFilter:;"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.026 2c-5.509 0-9.974 4.465-9.974 9.974 0 4.406 2.857 8.145 6.821 9.465.499.09.679-.217.679-.481 0-.237-.008-.865-.011-1.696-2.775.602-3.361-1.338-3.361-1.338-.452-1.152-1.107-1.459-1.107-1.459-.905-.619.069-.605.069-.605 1.002.07 1.527 1.028 1.527 1.028.89 1.524 2.336 1.084 2.902.829.091-.645.351-1.085.635-1.334-2.214-.251-4.542-1.107-4.542-4.93 0-1.087.389-1.979 1.024-2.675-.101-.253-.446-1.268.099-2.64 0 0 .837-.269 2.742 1.021a9.582 9.582 0 0 1 2.496-.336 9.554 9.554 0 0 1 2.496.336c1.906-1.291 2.742-1.021 2.742-1.021.545 1.372.203 2.387.099 2.64.64.696 1.024 1.587 1.024 2.675 0 3.833-2.33 4.675-4.552 4.922.355.308.675.916.675 1.846 0 1.334-.012 2.41-.012 2.737 0 .267.178.577.687.479C19.146 20.115 22 16.379 22 11.974 22 6.465 17.535 2 12.026 2z"></path></svg></a><a href="https://twitter.com/marangelo_git" target="_blank" class="mx-3" aria-label="Twitter" title="Twitter"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;transform: ;msFilter:;"><path d="M19.633 7.997c.013.175.013.349.013.523 0 5.325-4.053 11.461-11.46 11.461-2.282 0-4.402-.661-6.186-1.809.324.037.636.05.973.05a8.07 8.07 0 0 0 5.001-1.721 4.036 4.036 0 0 1-3.767-2.793c.249.037.499.062.761.062.361 0 .724-.05 1.061-.137a4.027 4.027 0 0 1-3.23-3.953v-.05c.537.299 1.16.486 1.82.511a4.022 4.022 0 0 1-1.796-3.354c0-.748.199-1.434.548-2.032a11.457 11.457 0 0 0 8.306 4.215c-.062-.3-.1-.611-.1-.923a4.026 4.026 0 0 1 4.028-4.028c1.16 0 2.207.486 2.943 1.272a7.957 7.957 0 0 0 2.556-.973 4.02 4.02 0 0 1-1.771 2.22 8.073 8.073 0 0 0 2.319-.624 8.645 8.645 0 0 1-2.019 2.083z"></path></svg></a><a href="https://www.linkedin.com/in/maryanespinoza" target="_blank" class="mx-3" aria-label="Linkedin" title="Linkedin"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;transform: ;msFilter:;"><circle cx="4.983" cy="5.009" r="2.188"></circle><path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path></svg></a><a href="/rss.xml" target="_blank" class="mx-3" aria-label="RSS Feed" title="RSS Feed"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" style="fill: currentColor;transform: ;msFilter:;"><path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"></path><path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"></path><circle cx="6" cy="18" r="2"></circle></svg></a></div></aside></div></div></body></html>
